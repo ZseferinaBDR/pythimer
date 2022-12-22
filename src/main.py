@@ -3,10 +3,10 @@ import time
 import sys
 
 from threading import Thread
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout
-from PyQt6.QtGui import QFont, QIcon
+from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QComboBox
+from PyQt6.QtGui import QFont, QIcon, QCursor
 from PyQt6 import QtCore
-from PyQt6.QtCore import pyqtSignal, QThread, QRect, QSize
+from PyQt6.QtCore import pyqtSignal, QThread, QRect, QSize, Qt
 from datetime import timedelta
 from enums.system_status import SystemState
 from PyQt6 import QtWidgets
@@ -39,9 +39,22 @@ class MainWindow(QWidget):
     def __init_translucent_layout(self):
         self.visible_child = QtWidgets.QWidget(self)
         self.visible_child.setStyleSheet(
-            'QWidget{background: rgba(12, 12, 12, .8); border-radius: 10px; border:1px solid #2b2b2b;}')
+            'QWidget{background: rgba(12, 12, 12, .95); border-radius: 10px; border:1px solid #2b2b2b;}')
         self.visible_child.setObjectName('vc')
         self.visible_child.setFixedSize(300, 100)
+
+        self.exit_button = QPushButton(self.visible_child)
+        self.exit_button.setStyleSheet(
+            'background:transparent; color:black;border: none;')
+        self.exit_button.setGeometry(275, 5, 15, 15)
+        self.exit_button.setIcon(QIcon('x.svg'))
+
+        self.exit_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+
+        self.exit_button.clicked.connect(lambda: self.exit_application())
+
+    def exit_application(self):
+        sys.exit()
 
     def __init_timer_label(self):
         self.timer_controls_layout = QHBoxLayout(self.visible_child)
@@ -64,6 +77,11 @@ class MainWindow(QWidget):
         self.control_button_pause.setIcon(QIcon('pause-circle.svg'))
         self.control_button_pause.setIconSize(QSize(30, 30))
         self.control_button_pause.hide()
+
+        self.control_button_pause.setCursor(
+            QCursor(Qt.CursorShape.PointingHandCursor))
+        self.control_button_play.setCursor(
+            QCursor(Qt.CursorShape.PointingHandCursor))
 
         self.timer_label = QLabel()
         self.timer_label.setText("00:00:00")
