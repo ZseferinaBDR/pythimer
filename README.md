@@ -10,4 +10,4 @@ This is a dead simple desktop stopwatch application for windows running on Pytho
 - ❌ Ability to add different projects and compile total time for each
 - ❌ Overview of time spent on a project
 
-**Note** this is purely an exercice for me and I may stop supporting the application at a y given time. That being said, all help, pull requests and rfcs are welcomed.
+**Note** this is purely an exercice for me and I may stop supporting the application at any given time. That being said, all help, pull requests and rfcs are welcomed.

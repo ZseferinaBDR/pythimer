@@ -1,7 +1,7 @@
 import enum
 import time
 import sys
-
+import os
 from threading import Thread
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QComboBox
 from PyQt6.QtGui import QFont, QIcon, QCursor
@@ -42,12 +42,13 @@ class MainWindow(QWidget):
             'QWidget{background: rgba(12, 12, 12, .95); border-radius: 10px; border:1px solid #2b2b2b;}')
         self.visible_child.setObjectName('vc')
         self.visible_child.setFixedSize(300, 100)
+        x = os.path.join(os.path.dirname(__file__), 'x.svg')
 
         self.exit_button = QPushButton(self.visible_child)
         self.exit_button.setStyleSheet(
             'background:transparent; color:black;border: none;')
         self.exit_button.setGeometry(275, 5, 15, 15)
-        self.exit_button.setIcon(QIcon('x.svg'))
+        self.exit_button.setIcon(QIcon(x))
 
         self.exit_button.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
 
@@ -57,6 +58,10 @@ class MainWindow(QWidget):
         sys.exit()
 
     def __init_timer_label(self):
+
+        play = os.path.join(os.path.dirname(__file__), 'play-circle.svg')
+        pause = os.path.join(os.path.dirname(__file__), 'pause-circle.svg')
+
         self.timer_controls_layout = QHBoxLayout(self.visible_child)
         self.timer_controls_layout.setContentsMargins(30, 0, 30, 0)
         self.timer_controls_layout.setSpacing(0)
@@ -66,7 +71,7 @@ class MainWindow(QWidget):
         self.control_button_play.setStyleSheet(
             'color:#F4F4F4;background-color: #4EBE9E; border: 1px solid black; border-radius:5px;')
 
-        self.control_button_play.setIcon(QIcon('play-circle.svg'))
+        self.control_button_play.setIcon(QIcon(play))
         self.control_button_play.setIconSize(QSize(30, 30))
 
         self.control_button_pause = QPushButton()
@@ -74,7 +79,7 @@ class MainWindow(QWidget):
         self.control_button_pause.setStyleSheet(
             'color:#F4F4F4;background-color: #4869fd; border: 1px; border-radius:5px;')
 
-        self.control_button_pause.setIcon(QIcon('pause-circle.svg'))
+        self.control_button_pause.setIcon(QIcon(pause))
         self.control_button_pause.setIconSize(QSize(30, 30))
         self.control_button_pause.hide()
 
