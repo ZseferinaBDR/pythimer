@@ -39,13 +39,13 @@ class MainWindow(QWidget):
     def __init_translucent_layout(self):
         self.visible_child = QtWidgets.QWidget(self)
         self.visible_child.setStyleSheet(
-            'QWidget{background: rgba(12, 12, 12, .9); border-radius: 10px; border:1px solid #2b2b2b;}')
+            'QWidget{background: rgba(12, 12, 12, .8); border-radius: 10px; border:1px solid #2b2b2b;}')
         self.visible_child.setObjectName('vc')
-        self.visible_child.setFixedSize(400, 140)
+        self.visible_child.setFixedSize(300, 100)
 
     def __init_timer_label(self):
         self.timer_controls_layout = QHBoxLayout(self.visible_child)
-        self.timer_controls_layout.setContentsMargins(60, 0, 60, 0)
+        self.timer_controls_layout.setContentsMargins(30, 0, 30, 0)
         self.timer_controls_layout.setSpacing(0)
 
         self.control_button_play = QPushButton()
@@ -59,7 +59,7 @@ class MainWindow(QWidget):
         self.control_button_pause = QPushButton()
         self.control_button_pause.setFixedSize(50, 50)
         self.control_button_pause.setStyleSheet(
-            'color:#F4F4F4;background-color: #4869fd; border: 1px solid black; border-radius:5px;')
+            'color:#F4F4F4;background-color: #4869fd; border: 1px; border-radius:5px;')
 
         self.control_button_pause.setIcon(QIcon('pause-circle.svg'))
         self.control_button_pause.setIconSize(QSize(30, 30))
@@ -68,7 +68,6 @@ class MainWindow(QWidget):
         self.timer_label = QLabel()
         self.timer_label.setText("00:00:00")
         self.timer_label.setFont(QFont("Sanserif", 30, 800))
-        # self.timer_label.setGeometry(105, 50, 400, 50)
         self.timer_label.setStyleSheet(
             'color:#F4F4F4;background-color: transparent;border:none;')
 
