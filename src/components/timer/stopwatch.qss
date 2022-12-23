@@ -1,0 +1,19 @@
+QPushButton#timerplaybtn {
+    color:#F4F4F4;
+    background-color: #4EBE9E;
+    border: 1px solid black;
+    border-radius:5px;
+}
+
+QPushButton#timerpausebtn {
+    color:#F4F4F4;
+    background-color: #4869fd; 
+    border: 1px;
+    border-radius:5px;
+}
+
+QLabel#timerlbl {
+    color:#F4F4F4;
+    background-color: transparent;
+    border:none;
+}
